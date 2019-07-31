@@ -21,6 +21,7 @@ class ItemForm extends Component {
     axios.post("http://localhost:5000/item/create", newItem).then(response => {
         console.log(newItem);
         console.log(response)
+        this.props.getAll()
     });
   };
 

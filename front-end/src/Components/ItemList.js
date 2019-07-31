@@ -1,15 +1,12 @@
 import React from "react";
+import _ from "lodash";
+
+import "../App.css";
+
 import Item from "./Item";
 
 function ItemList(props) {
-    
-//   const { data } = props.data;
 
-  const tabRow = () => {
-    props.data.map(function(object, i){
-        return <Item obj={object} key={i} />;
-    });
-  }
 
   return (
     <div className="container">
@@ -21,7 +18,20 @@ function ItemList(props) {
             <td>Delete</td>
           </tr>
         </thead>
-        <tbody>{tabRow()}</tbody>
+        <tbody>
+          {_.reverse(props.data).map(item => (
+            
+             
+                <Item
+                  getAll={props.getAll}
+                  username={item.username}
+                  content={item.content}
+                  id={item._id}
+                />
+              
+            
+          ))}
+        </tbody>
       </table>
     </div>
   );
